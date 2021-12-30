@@ -8,7 +8,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/833052/pexels-photo-833052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+    url("https://images.pexels.com/photos/974911/pexels-photo-974911.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
       center;
   background-size: cover;
   display: flex;
@@ -49,8 +49,9 @@ const Agreement = styled.span`
 `;
 
 const Button = styled.button`
-  width: 40%;
+ 
   border: 2px solid teal;
+  margin-bottom:10px;
   padding: 15px 20px;
   color: black;
   font-weight:600;
@@ -68,17 +69,21 @@ const Register = () => {
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="First name" />
-          <Input placeholder="Last name" />
-          <Input placeholder="Username" />
-          <Input placeholder="Email" />
-          <Input placeholder="Password" />
-          <Input placeholder="Confirm Password" />
+          <Input placeholder="First name"/>
+          <Input placeholder="Last name"/>
+          <Input placeholder="Username"/>
+          <Input placeholder="Email"/>
+          <Input placeholder="Password"/>
+          <Input placeholder="Confirm Password"/>
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
+          <div style={{display:'flex',flexDirection:'column'}} className="last">
+          
           <Button>SIGN UP</Button>
+          <p>Already have an account ? <a href='/login'>Login</a></p>
+          </div>
         </Form>
       </Wrapper>
     </Container>

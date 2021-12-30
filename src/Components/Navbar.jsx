@@ -4,6 +4,10 @@ import Badge from '@mui/material/Badge';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import styled from 'styled-components'
 import { mobile } from "../responsive";
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import { useHistory } from 'react-router';
 
 
 const Container = styled.div`
@@ -33,6 +37,7 @@ const SearchContainer = styled.div`
         display:flex;
         align-items:center;
         margin-left:25px; 
+        margin-right:25px; 
         padding:5px;
         
 `
@@ -47,7 +52,7 @@ const Center = styled.div`
 `
 const Logo = styled.h1`
         font-weight:900;
-        ${mobile({ fontSize: "15px",fontWeight:"900" })}
+        ${mobile({ fontSize: "15px", fontWeight: "900" })}
         
 `
 const Right = styled.div`
@@ -63,38 +68,59 @@ const MenuItem = styled.div`
         margin-left:25px;
         ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `
+const Icon = styled.div`
+cursor:pointer;
+`
 
 export default function Navbar() {
-    return (
-        <Container>
-             <Wrapper>
-                 <Left><Language>EN</Language>
-                 <SearchContainer>
-                    <Input placeholder="Serach"/>
-                    <Search style={{color:"gray",fontSize:16}} />
-                 </SearchContainer>
-                 </Left>
-                 <Center>
-                     <Logo>
-                        HAPIEE SHOPIEE.
-                     </Logo>
-                     </Center>
-                 <Right>
-                     <MenuItem>
-                    REGISTER
-                     </MenuItem>
-                     <MenuItem>
-                    SIGNIN
-                     </MenuItem>
-                     <MenuItem>
-                 <Badge badgeContent={4} color="primary">
-                <ShoppingCartOutlinedIcon />
-                </Badge>
-                     </MenuItem>
-                 </Right>
-                 </Wrapper>  
-             </Container>
-         
-    
-    )
+        const quantity = useSelector(state => state.cart.quantity);
+        const history = useHistory();
+        const logout = () => {
+                localStorage.clear();
+                setTimeout(() => {
+                        history.push('/')
+                },500)
+        }
+
+
+        // console.log(quantity)
+        return (
+                <Container>
+                        <Wrapper>
+                                <Left><Language>EN</Language>
+                                        <SearchContainer>
+                                                <Input placeholder="Serach" />
+                                                <Search style={{ color: "gray", fontSize: 16 }} />
+                                        </SearchContainer>
+                                        <Link to="/">
+                                                <Icon>  <HomeIcon /> </Icon>
+                                        </Link>
+                                </Left>
+                                <Center>
+                                        <Logo>
+                                                HAPIEE SHOPIEE.
+                                        </Logo>
+                                </Center>
+                                <Right>
+                                        <MenuItem onClick={logout}>
+                                                LOGOUT
+                                        </MenuItem>
+                                        <Link style={{textDecoration:'none',color:'black'}} to="/login">
+                                                <MenuItem>
+                                                        LOGIN
+                                                </MenuItem>
+                                        </Link>
+                                        {quantity > 0 ? (<Link to="/cart">
+                                                <MenuItem>
+                                                        <Badge badgeContent={quantity} color="primary">
+                                                                <ShoppingCartOutlinedIcon />
+                                                        </Badge>
+                                                </MenuItem>
+                                        </Link>) : ''}
+                                </Right>
+                        </Wrapper>
+                </Container>
+
+
+        )
 }

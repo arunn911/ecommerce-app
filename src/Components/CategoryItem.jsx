@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
+
 const Container = styled.div`
   flex: 1;
   margin: 3px;
@@ -42,13 +43,19 @@ const Button = styled.button`
 `;
 
 const CategoryItem = ({ item }) => {
+
+  const url = `products/${item.cat}`;
+
   return (
+
     <Container>
+      
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
-        <Button>SHOP NOW</Button>
+        <Button><a style={{color:'black',textDecoration:'none'}} href={url}>SHOP NOW</a></Button>
       </Info>
+      
     </Container>
   );
 };
