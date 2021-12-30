@@ -25,22 +25,33 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 `;
 
 const Title = styled.h1`
-    color:white;
+    color:black;
+    background-color:white;
+    padding:5px;
     margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
 `;
 
 const Button = styled.button`
     border:none;
     padding: 10px;
-    background-color: white;
-    color:gray;
+    background-color: teal;
+    color:white;
     cursor: pointer;
     font-weight: 600;
+    margin-bottom:20px;
+   
 `;
+const Link = styled.a`
+ color:white;
+ text-decoration:none;
+
+`
 
 const CategoryItem = ({ item }) => {
 
@@ -53,7 +64,7 @@ const CategoryItem = ({ item }) => {
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
-        <Button><a style={{color:'black',textDecoration:'none'}} href={url}>SHOP NOW</a></Button>
+        <Button><Link href={url}>SHOP NOW</Link></Button>
       </Info>
       
     </Container>
