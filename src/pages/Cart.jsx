@@ -9,7 +9,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
-import { resetCart } from "../redux/cartRedux";
+import {  resetCart } from "../redux/cartRedux";
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { Link } from "react-router-dom";
 
@@ -202,11 +202,16 @@ const Cart = () => {
     dispatch(resetCart());
   }
 
+
+
+
+
   return (
     <Container>
       <Navbar />
       <Announcement />
-      <Wrapper>
+    { cart.products.length < 1 ? (<Additems/>) : ( 
+    <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
         <Link to = {"/products"}>
@@ -281,9 +286,24 @@ const Cart = () => {
           </Summary>
         </Bottom>
       </Wrapper>
+      )}
       <Footer />
     </Container>
   );
 };
+
+
+
+const Additems = () => {
+  return (
+  <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:'20px'}}>
+    <h1>No items in your cart</h1>
+    <Link to = {"/products"}>
+    <button>Add products</button>
+    </Link>
+  </div>
+  )
+}
+
 
 export default Cart;
