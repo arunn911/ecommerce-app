@@ -105,9 +105,9 @@ export default function Navbar() {
                                         </Logo>
                                 </Center>
                                 <Right>
-                                        <MenuItem onClick={logout}>
+                                       {user ? ( <MenuItem onClick={logout}>
                                                 LOGOUT
-                                        </MenuItem>
+                                        </MenuItem>) : ''}
                                         <Link style={{textDecoration:'none',color:'black'}} to="/login">
                                                 <MenuItem>
                                                         LOGIN
