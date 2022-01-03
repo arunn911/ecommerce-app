@@ -3,7 +3,7 @@ import React from 'react';
 import Badge from '@mui/material/Badge';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import styled from 'styled-components'
-import { mobile } from "../responsive";
+import { mobile, midscreen } from "../responsive";
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
@@ -39,6 +39,7 @@ const SearchContainer = styled.div`
         margin-left:25px; 
         margin-right:25px; 
         padding:5px;
+        ${midscreen({display:'none'})}
         
 `
 const Input = styled.input`
@@ -52,7 +53,9 @@ const Center = styled.div`
 `
 const Logo = styled.h1`
         font-weight:900;
+        ${midscreen({ fontSize: "20px"})}
         ${mobile({ fontSize: "15px", fontWeight: "900" })}
+       
         
 `
 const Right = styled.div`

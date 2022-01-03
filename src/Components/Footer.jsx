@@ -8,10 +8,11 @@ import {
     Twitter,
   } from "@material-ui/icons";
   import styled from "styled-components";
-  import { mobile } from "../responsive";
+  import { mobile,midscreen } from "../responsive";
   
   const Container = styled.div`
     display: flex;
+    ${midscreen({ flexDirection: "column" })} 
     ${mobile({ flexDirection: "column" })}
   `;
   

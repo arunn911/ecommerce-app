@@ -5,6 +5,8 @@ import Product from "./Product";
 // import axios from "axios";
 import { useHistory } from "react-router";
 import { userRequest } from "../requestMethods";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../redux/userRedux";
 
 const Container = styled.div`
     padding: 20px;
@@ -18,8 +20,12 @@ const Products = ({cat, filters, sort}) => {
   const [products,setProducts] = useState([]);
   const [filteredProducts,setFilteredProducts] = useState([]);
  const history = useHistory();
-  // console.log(cat, filters, sort);
+const dispatch = useDispatch()
 
+
+
+
+  // console.log(cat, filters, sort);
   useEffect(() => {
     const getProducts = async () => {
       try{
@@ -27,11 +33,15 @@ const Products = ({cat, filters, sort}) => {
         // console.log(res);
         setProducts(res.data)
       }catch(err){
+       dispatch(removeUser());
+       setTimeout(() => {
         history.push('/login')
+       },1500)
+        
        }
     };
     getProducts()
-  },[cat,history])
+  },[cat,dispatch,history])
 
 
   useEffect(() => {

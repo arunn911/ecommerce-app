@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Announcement from "../Components/Announcement";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { mobile } from "../responsive";
+import { mobile,midscreen } from "../responsive";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
@@ -62,6 +62,7 @@ const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   ${mobile({ flexDirection: "column" })}
+  ${midscreen({ flexDirection: "column" })}
 `;
 
 const Info = styled.div`

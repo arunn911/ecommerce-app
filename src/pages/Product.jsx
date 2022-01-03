@@ -10,7 +10,7 @@ import Newsletter from "../Components/Newsletter";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { publicRequest } from "../requestMethods";
-import { mobile } from "../responsive";
+import { mobile,midscreen } from "../responsive";
 
 const Container = styled.div``;
 
@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   padding: 50px;
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
+  ${midscreen({ flexDirection:'column' })}
 `;
 
 const ImgContainer = styled.div`
@@ -29,6 +30,7 @@ const Image = styled.img`
   height: 90vh;
   object-fit: cover;
   ${mobile({ height: "40vh" })}
+  ${midscreen({ height: "50vh" })}
 `;
 
 const InfoContainer = styled.div`
@@ -90,6 +92,7 @@ const AddContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   ${mobile({ width: "100%" })}
+  ${midscreen({ width: "70%" })}
 `;
 
 const AmountContainer = styled.div`
