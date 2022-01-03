@@ -77,6 +77,7 @@ cursor:pointer;
 
 export default function Navbar() {
         const quantity = useSelector(state => state.cart.quantity);
+        const user = useSelector(state => state.user.currentUser)
         const history = useHistory();
         const logout = () => {
                 localStorage.clear();
